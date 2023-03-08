@@ -1,5 +1,7 @@
 # Machine Predictive Maintenance
 
+Notebook script is store in this [link](./script/mpm-script.ipynb)
+
 # Dataset
 
 Dataset link [here](https://www.kaggle.com/datasets/shivamb/machine-predictive-maintenance-classification)
