@@ -2,38 +2,42 @@
 {% block title %} Form Page {% endblock %}
 {% block content %}
 
-<form action='{{ url_for('predict') }}' method='POST'>
-    <div class='row mb-3'>
-        <label for="inputEmail3" class="col-sm-3 col-form-label">Machine Type</label>
-        <div class='col-sm-9'>
-            <select class="form-select" name='machine_type' id='machine_type'>
-                <option value="0" selected>Low</option>
-                <option value="1">Medium</option>
-                <option value="2">High</option>
-            </select>
+<div class='container'>
+    <form action='{{ url_for('predict') }}' method='POST'>
+        <div class='row mb-3'>
+            <label for="inputEmail3" class="col-sm-3 col-form-label">Machine Type</label>
+            <div class='col-sm-9'>
+                <select class="form-select" name='machine_type' id='machine_type'>
+                    <option value="0" selected>Low</option>
+                    <option value="1">Medium</option>
+                    <option value="2">High</option>
+                </select>
+            </div>
         </div>
-    </div>
-    <div class="row mb-3">
-        <label for="inputEmail3" class="col-sm-3 col-form-label">Air Temperature[C]</label>
-        <div class="col-sm-9">
-            <input type="text" class="form-control" id="air_temp" name='air_temp' required>
+        <div class="row mb-3">
+            <label for="inputEmail3" class="col-sm-3 col-form-label">Air Temperature[C]</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" id="air_temp" name='air_temp' placeholder='ex. 30.55' required>
+            </div>
         </div>
-    </div>
-    <div class="row mb-3">
-        <label for="inputEmail3" class="col-sm-3 col-form-label">Torque[Nm]</label>
-        <div class="col-sm-9">
-            <input type="text" class="form-control" id="torque" name='torque' required>
+        <div class="row mb-3">
+            <label for="inputEmail3" class="col-sm-3 col-form-label">Torque[Nm]</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" id="torque" name='torque' placeholder='ex. 55.2' required>
+            </div>
         </div>
-    </div>
-    <div class="row mb-3">
-        <label for="inputEmail3" class="col-sm-3 col-form-label">Tool Wear[min]</label>
-        <div class="col-sm-9">
-            <input type="text" class="form-control" id="tool_wear" name='tool_wear' required>
+        <div class="row mb-3">
+            <label for="inputEmail3" class="col-sm-3 col-form-label">Tool Wear[min]</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" id="tool_wear" name='tool_wear' placeholder='ex. 20' required>
+            </div>
         </div>
-    </div>
-    <button type="submit" class="btn btn-primary">Predict</button>
-</form>
-
-
-{{prediction_text}}
+        <button type="submit" class="btn btn-primary" style='float: right;'>Predict</button>
+    </form>
+</div>
+{% if prediction_text %}
+<div class='container'>
+    <h2>The prediction is <span class='badge bg-primary'>{{prediction_text}}</span></h2>
+</div>
+{% endif %}
 {% endblock %}

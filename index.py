@@ -4,9 +4,9 @@ import numpy as np
 
 app = Flask(__name__)
 failure_types = {
-    0 : 'Heat Dissipation Failue',
+    0 : 'Heat Dissipation Failure',
     1 : 'No Failure',
-    2 : 'Overstrain Failue',
+    2 : 'Overstrain Failure',
     3 : 'Power Failure',
     4 : 'Random Failures',
     5 : 'Tool Wear Failure',
@@ -35,7 +35,7 @@ def predict():
     data_scaled = pickle_scaler.transform(data_arr)
     predict_value = pickle_model.predict(data_scaled)
     prediction_text = failure_types[predict_value[0]]
-    return render_template('form.html', prediction_text=f'The prediction is [{prediction_text}]')
+    return render_template('form.html', prediction_text=prediction_text)
 
 @app.route('/result/<torque>')
 def result(torque):
